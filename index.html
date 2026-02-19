@@ -7,6 +7,10 @@
     <title>Propuesta Económica - Foxy Studio</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
+    <script>
+        // Progressive enhancement: Add .js class to detect JS support
+        document.documentElement.classList.add('js');
+    </script>
 </head>
 
 <body>
@@ -173,7 +177,11 @@
     </div>
 
     <script>
-        const observerOptions = { threshold: 0.1 };
+        // Use a more permissive threshold and rootMargin for better mobile/tablet compatibility
+        const observerOptions = {
+            threshold: 0.05,
+            rootMargin: '0px 0px -20px 0px'
+        };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -184,8 +192,26 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.animate-up, .animate-right, .animate-drop, .animate-heartbeat').forEach(el => {
-            observer.observe(el);
+        // Elements to observe
+        const animatedElements = document.querySelectorAll('.animate-up, .animate-right, .animate-drop, .animate-heartbeat');
+
+        animatedElements.forEach(el => {
+            // If the element is on the first page, trigger it immediately
+            if (el.closest('.cover-page')) {
+                el.classList.add('visible');
+            } else {
+                observer.observe(el);
+            }
+        });
+
+        // Trigger animations for elements already in view on load
+        window.addEventListener('load', () => {
+            animatedElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom >= 0) {
+                    el.classList.add('visible');
+                }
+            });
         });
     </script>
 </body>

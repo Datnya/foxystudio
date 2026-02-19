@@ -577,22 +577,29 @@ body {
     }
 }
 
-.animate-up,
-.animate-right,
-.animate-drop,
-.animate-heartbeat {
+/* Base state for animated elements - initially hidden ONLY if JS is active */
+.js .animate-up,
+.js .animate-right,
+.js .animate-drop,
+.js .animate-heartbeat {
     opacity: 0;
     visibility: hidden;
+    transition: opacity 0.5s ease;
 }
 
-.animate-up.visible {
+/* Force immediate visibility for cover elements or when 'visible' class is added */
+.animate-up.visible,
+.cover-page .animate-up {
     animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-    visibility: visible;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
-.animate-right.visible {
+.animate-right.visible,
+.cover-page .animate-right {
     animation: slideInRight 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-    visibility: visible;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .delay-1 {
@@ -641,15 +648,18 @@ body {
     }
 }
 
-.animate-heartbeat.visible {
+.animate-heartbeat.visible,
+.cover-page .animate-heartbeat {
     animation: heartbeat 3s ease-in-out infinite;
-    visibility: visible;
-    opacity: 1;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
-.animate-drop.visible {
+.animate-drop.visible,
+.cover-page .animate-drop {
     animation: dropIn 1s cubic-bezier(0.2, 0.8, 0.2, 1.2) forwards;
-    visibility: visible;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .corner-fox {
