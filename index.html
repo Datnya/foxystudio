@@ -173,28 +173,18 @@
     </div>
 
     <script>
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1
-        };
+        const observerOptions = { threshold: 0.1 };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.visibility = 'visible';
-                    // Apply the animation class if it exists as a data attribute or predefined
-                    const animClass = entry.target.dataset.animation || entry.target.className.match(/animate-[a-z-]+/);
-                    if (animClass) {
-                        entry.target.classList.add(animClass);
-                    }
+                    entry.target.classList.add('visible');
                     observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
 
-        // Target all elements with animation classes to trigger them on scroll
         document.querySelectorAll('.animate-up, .animate-right, .animate-drop, .animate-heartbeat').forEach(el => {
-            el.style.visibility = 'hidden';
             observer.observe(el);
         });
     </script>

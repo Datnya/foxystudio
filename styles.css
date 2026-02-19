@@ -489,6 +489,8 @@ body {
     /* Force all potentially hidden elements to be visible in PDF */
     .animate-up,
     .animate-right,
+    .animate-drop,
+    .animate-heartbeat,
     [style*="visibility: hidden"],
     .service-card,
     .timeline-step,
@@ -513,6 +515,7 @@ body {
     .value {
         color: #fff !important;
         -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
     }
 
     /* Restore specific brand colors */
@@ -574,12 +577,22 @@ body {
     }
 }
 
-.animate-up {
-    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+.animate-up,
+.animate-right,
+.animate-drop,
+.animate-heartbeat {
+    opacity: 0;
+    visibility: hidden;
 }
 
-.animate-right {
+.animate-up.visible {
+    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    visibility: visible;
+}
+
+.animate-right.visible {
     animation: slideInRight 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    visibility: visible;
 }
 
 .delay-1 {
@@ -628,12 +641,15 @@ body {
     }
 }
 
-.animate-heartbeat {
+.animate-heartbeat.visible {
     animation: heartbeat 3s ease-in-out infinite;
+    visibility: visible;
+    opacity: 1;
 }
 
-.animate-drop {
+.animate-drop.visible {
     animation: dropIn 1s cubic-bezier(0.2, 0.8, 0.2, 1.2) forwards;
+    visibility: visible;
 }
 
 .corner-fox {
