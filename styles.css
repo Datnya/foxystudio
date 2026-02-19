@@ -1,0 +1,621 @@
+:root {
+    --bg-color: #000000;
+    --text-color: #ffffff;
+    --accent-color: #FF7518;
+    /* Fox Orange */
+    --accent-alt: #E65C00;
+    --gray-text: #888888;
+    --a4-width: 297mm;
+    --a4-height: 210mm;
+}
+
+@font-face {
+    font-family: 'Outfit';
+    src: url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+body {
+    background-color: #1a1a1a;
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: var(--text-color);
+}
+
+.proposal-container {
+    width: var(--a4-width);
+    margin: 0 auto;
+}
+
+.page {
+    width: var(--a4-width);
+    height: var(--a4-height);
+    background-color: var(--bg-color);
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Page 1: Cover */
+.page.cover-page {
+    justify-content: flex-start;
+    padding: 80px;
+    background: url('FONDO.jpg') no-repeat center center !important;
+    background-size: cover !important;
+}
+
+.cover-content {
+    position: relative;
+    z-index: 2;
+    max-width: 80%;
+    /* Increased from 60% */
+    margin-top: 50px;
+}
+
+.proposal-for .label {
+    font-size: 14px;
+    color: var(--gray-text);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.client-name {
+    font-size: 20px;
+    /* Reduced from 24px */
+    font-weight: 700;
+    color: var(--text-color);
+    line-height: 1.2;
+}
+
+.presenter .label {
+    font-size: 12px;
+    color: var(--gray-text);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+}
+
+.presenter .name {
+    font-size: 16px;
+    /* Reduced from 18px */
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.slogan {
+    font-size: 16px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    display: block;
+    font-weight: 300;
+}
+
+.brand-logo-main {
+    height: 140px;
+    /* Slightly larger */
+    margin-bottom: 30px;
+    filter: drop-shadow(0 0 10px rgba(255, 117, 24, 0.4));
+}
+
+.proposal-title {
+    font-size: 44px;
+    /* Reduced from 50px */
+    font-weight: 700;
+    line-height: 1.1;
+    text-transform: uppercase;
+    margin-top: 60px;
+    /* Reduced from 80px */
+    border-bottom: 4px solid var(--text-color);
+    padding-bottom: 20px;
+    width: fit-content;
+}
+
+.proposal-for {
+    margin-top: 80px;
+}
+
+.presenter {
+    position: absolute;
+    bottom: 60px;
+    /* Adjusted from 80px */
+    left: 80px;
+    text-align: left;
+}
+
+.proposal-title span {
+    color: var(--accent-color);
+}
+
+.cover-image-container {
+    display: none;
+    /* Using background image instead */
+}
+
+/* Page 2: Welcome */
+.welcome-page {
+    padding: 80px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 100 100' opacity='0.1'%3E%3Cpath fill='%23FF7518' d='M20,80 C30,75 40,70 50,75 C60,80 70,85 80,80 C75,70 70,60 75,50 C80,40 85,30 80,20 C70,25 60,30 50,25 C40,20 30,15 20,20 C15,30 10,40 15,50 C20,60 25,70 20,80 Z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 110% 110%;
+}
+
+.logo-small {
+    height: 70px;
+    margin-bottom: 60px;
+}
+
+.brand-logo-small {
+    height: 100%;
+}
+
+.welcome-title {
+    font-size: 80px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -2px;
+}
+
+.welcome-subtitle {
+    font-size: 32px;
+    color: var(--accent-color);
+    margin-bottom: 50px;
+    font-weight: 400;
+}
+
+.welcome-text {
+    font-size: 28px;
+    line-height: 1.3;
+    max-width: 70%;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.welcome-small {
+    font-size: 18px;
+    color: #cccccc;
+    line-height: 1.6;
+    max-width: 60%;
+    border-left: 2px solid var(--accent-color);
+    padding-left: 30px;
+}
+
+/* Internal Pages Fox Pattern */
+.page {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150' viewBox='0 0 24 24' fill='%23FF7518' opacity='0.08'%3E%3Cpath d='M20 20c-1.5-1.5-3-3-4-4-1 1-1.5 2-2 3s-1 2-2 2-2-1-2-2-1-2-2-3c-.5 1-1 2.5-2.5 4M4 20C4 16 6 12 10 9c0 0 1-1 2-1s2 1 2 1c4 3 6 7 6 11M12 8V4l-2 1-1-1 3-2 3 2-1 1-2-1v4'/%3E%3C/svg%3E");
+}
+
+/* Corner Icon Decor */
+.corner-fox {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 100px;
+    height: 100px;
+    opacity: 0.15;
+    fill: var(--accent-color);
+    pointer-events: none;
+}
+
+/* Page 3: Services & Methodology - NEW STRUCTURE */
+.services-container {
+    padding: 60px 80px;
+    height: 100%;
+}
+
+.service-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 117, 24, 0.2);
+    padding: 30px;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--accent-color);
+}
+
+.card-icon {
+    width: 40px;
+    height: 40px;
+    fill: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.service-card h4 {
+    font-size: 18px;
+    color: var(--text-color);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.service-card p {
+    font-size: 13px;
+    color: #aaa;
+    line-height: 1.5;
+}
+
+/* Page 4: Process Timeline - NEW STRUCTURE */
+.process-page {
+    padding: 60px 80px;
+}
+
+.timeline {
+    position: relative;
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    top: 45px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-color) 0%, transparent 100%);
+    z-index: 0;
+}
+
+.timeline-step {
+    position: relative;
+    z-index: 1;
+}
+
+.step-number {
+    width: 90px;
+    height: 90px;
+    background: var(--bg-color);
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 30px;
+    box-shadow: 0 0 20px rgba(255, 117, 24, 0.2);
+}
+
+.step-info h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.step-info ul {
+    list-style: none;
+}
+
+.step-info li {
+    font-size: 13px;
+    color: #888;
+    margin-bottom: 5px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.step-info li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent-color);
+}
+
+/* Page 3: Opportunities */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    padding: 80px;
+    height: 100%;
+}
+
+.section-title {
+    font-size: 28px;
+    color: var(--accent-color);
+    margin-bottom: 25px;
+}
+
+.opp-list,
+.sol-list {
+    list-style: none;
+}
+
+.opp-item,
+.sol-item {
+    margin-bottom: 20px;
+}
+
+.item-head {
+    font-weight: 700;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.item-desc {
+    font-size: 14px;
+    color: var(--gray-text);
+    line-height: 1.4;
+}
+
+.stages {
+    background: #0a0a0a;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.stage {
+    margin-bottom: 30px;
+}
+
+.stage-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.stage-items {
+    font-size: 14px;
+    list-style: none;
+}
+
+.stage-items li {
+    margin-bottom: 5px;
+    color: var(--gray-text);
+}
+
+/* Page 4: Investment */
+.investment-page {
+    padding: 80px;
+}
+
+.investment-box {
+    border-top: 2px solid var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding: 30px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 40px 0;
+}
+
+.investment-label {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.investment-value {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.payment-terms {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+.terms-list {
+    list-style: none;
+    font-size: 12px;
+    color: var(--gray-text);
+}
+
+.terms-list li {
+    margin-bottom: 8px;
+}
+
+.contact-info {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.contact-item .label {
+    font-size: 10px;
+}
+
+.contact-item .value {
+    font-size: 12px;
+}
+
+/* Print Styles */
+@media print {
+    @page {
+        margin: 0;
+        size: A4 landscape;
+    }
+
+    body {
+        background-color: #000 !important;
+        margin: 0;
+        padding: 0;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    .proposal-container {
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+    }
+
+    .page {
+        margin: 0;
+        border: none !important;
+        box-shadow: none !important;
+        width: 100vw;
+        height: 100vh;
+        page-break-after: always;
+        overflow: hidden;
+        visibility: visible !important;
+        display: flex !important;
+    }
+
+    /* Force all potentially hidden elements to be visible in PDF */
+    .animate-up,
+    .animate-right,
+    [style*="visibility: hidden"],
+    .service-card,
+    .timeline-step,
+    .welcome-text,
+    .welcome-small {
+        visibility: visible !important;
+        opacity: 1 !important;
+        display: block !important;
+        transform: none !important;
+        animation: none !important;
+    }
+
+    /* Boost contrast for print */
+    h1,
+    h2,
+    h3,
+    h4,
+    span,
+    p,
+    li,
+    .name,
+    .value {
+        color: #fff !important;
+        -webkit-print-color-adjust: exact !important;
+    }
+
+    /* Restore specific brand colors */
+    .proposal-title span,
+    .welcome-subtitle,
+    .accent-color,
+    .section-title,
+    .presenter .name,
+    .step-number,
+    .investment-value {
+        color: var(--accent-color) !important;
+    }
+
+    .gray-text,
+    .item-desc,
+    .welcome-small,
+    .label,
+    p,
+    li {
+        color: #eee !important;
+    }
+}
+
+/* --- ANIMATIONS FOR DIGITAL VERSION --- */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes foxFloat {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(2deg);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.animate-right {
+    animation: slideInRight 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.delay-1 {
+    animation-delay: 0.2s;
+}
+
+.delay-2 {
+    animation-delay: 0.4s;
+}
+
+.delay-3 {
+    animation-delay: 0.6s;
+}
+
+.corner-fox {
+    animation: foxFloat 6s ease-in-out infinite !important;
+}
+
+.service-card {
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 30px rgba(255, 117, 24, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.step-number {
+    transition: all 0.3s ease;
+}
+
+.timeline-step:hover .step-number {
+    transform: scale(1.1);
+    background: var(--accent-color);
+    color: white;
+    box-shadow: 0 0 30px var(--accent-color);
+}
