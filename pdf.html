@@ -4,19 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Propuesta Económica (Versión PDF) - Foxy Studio</title>
-    <link rel="stylesheet" href="styles.css?v=4">
+    <title>Propuesta Económica (Versión PDF Estática) - Foxy Studio</title>
+    <link rel="stylesheet" href="styles.css?v=5">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         /* Force everything visible for PDF export */
-        .animate-up,
-        .animate-right,
-        .animate-drop,
-        .animate-pulse {
+        * {
             opacity: 1 !important;
             visibility: visible !important;
             transform: none !important;
             animation: none !important;
+            transition: none !important;
         }
 
         .page {
@@ -119,8 +117,8 @@
             <div class="process-cards">
                 <div class="process-card">
                     <div class="step-badge">01</div>
-                    <div class="card-icon-wrapper">
-                        <svg class="card-icon" viewBox="0 0 24 24">
+                    <div class="card-icon-wrapper-pdf">
+                        <svg class="card-icon-pdf" viewBox="0 0 24 24">
                             <path
                                 d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
                         </svg>
@@ -134,8 +132,8 @@
                 </div>
                 <div class="process-card">
                     <div class="step-badge">02</div>
-                    <div class="card-icon-wrapper">
-                        <svg class="card-icon" viewBox="0 0 24 24">
+                    <div class="card-icon-wrapper-pdf">
+                        <svg class="card-icon-pdf" viewBox="0 0 24 24">
                             <path
                                 d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
                         </svg>
@@ -149,8 +147,8 @@
                 </div>
                 <div class="process-card">
                     <div class="step-badge">03</div>
-                    <div class="card-icon-wrapper">
-                        <svg class="card-icon" viewBox="0 0 24 24">
+                    <div class="card-icon-wrapper-pdf">
+                        <svg class="card-icon-pdf" viewBox="0 0 24 24">
                             <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
                         </svg>
                     </div>

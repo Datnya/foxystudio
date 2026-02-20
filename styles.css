@@ -518,31 +518,23 @@ body {
 }
 
 /* Print Styles - REFINED FOR STABILITY */
+/* Print Styles - STABILITY & ORIGINAL DESIGN RESTORATION */
 @media print {
     @page {
         margin: 0;
         size: A4 landscape;
     }
 
-    /* Force EVERYTHING visible without breaking structure */
     * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
-        animation: none !important;
-        transition: none !important;
     }
 
     body {
         background-color: #000 !important;
+        color: #fff !important;
         margin: 0;
         padding: 0;
-        color: #fff !important;
-    }
-
-    .proposal-container {
-        width: 100% !important;
-        max-width: none !important;
-        margin: 0 !important;
     }
 
     .page {
@@ -559,15 +551,13 @@ body {
         overflow: hidden !important;
     }
 
-    /* Fix Methodology and Services Visibility */
+    /* Force all hidden/animated elements to be visible */
     .animate-up,
     .animate-right,
     .animate-drop,
     .animate-pulse,
-    .js .animate-up,
-    .js .animate-right,
-    .js .animate-drop,
-    .js .animate-pulse,
+    [class*="animate-"],
+    .js [class*="animate-"],
     .service-card,
     .process-card,
     .welcome-text,
@@ -575,46 +565,75 @@ body {
         opacity: 1 !important;
         visibility: visible !important;
         display: flex !important;
-        /* Restore flex/grid compatibility */
-        flex-direction: column !important;
         transform: none !important;
     }
 
-    /* Restore Original Grids */
-    .service-cards,
+    /* --- SERVICES SECTION (RESTORE ORIGINAL) --- */
+    .service-cards {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 30px !important;
+        margin-top: 40px !important;
+    }
+
+    .service-card {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 117, 24, 0.2) !important;
+        padding: 30px !important;
+        border-radius: 15px !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        /* Restore Left Alignment */
+        text-align: left !important;
+        height: auto !important;
+    }
+
+    .service-card .card-icon {
+        fill: var(--accent-color) !important;
+        /* Restore Original Orange */
+        width: 40px !important;
+        height: 40px !important;
+        margin-bottom: 20px !important;
+        background: none !important;
+    }
+
+    /* --- METHODOLOGY SECTION (CENTERED CARDS) --- */
     .process-cards {
         display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
         gap: 30px !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-        margin-top: 40px !important;
+        margin-top: 50px !important;
     }
 
-    .service-card,
     .process-card {
         background: rgba(255, 255, 255, 0.05) !important;
         border: 1px solid var(--accent-color) !important;
-        padding: 30px !important;
-        border-radius: 15px !important;
-        height: auto !important;
+        padding: 40px 30px !important;
+        border-radius: 20px !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        /* Keep Centered */
+        text-align: center !important;
     }
 
-    .card-icon-wrapper {
+    .card-icon-wrapper,
+    .card-icon-wrapper-pdf {
         background: var(--accent-color) !important;
-        border-radius: 10px !important;
-        width: 60px !important;
-        height: 60px !important;
+        border-radius: 18px !important;
+        width: 80px !important;
+        height: 80px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
-        margin-bottom: 20px !important;
+        margin-bottom: 25px !important;
     }
 
-    .card-icon {
+    .card-icon-pdf,
+    .process-card .card-icon {
         fill: #fff !important;
-        width: 30px !important;
-        height: 30px !important;
+        /* White Icons for methodology */
+        width: 40px !important;
+        height: 40px !important;
     }
 
     /* Typography Contrast */
@@ -626,8 +645,6 @@ body {
     span,
     li {
         color: #fff !important;
-        opacity: 1 !important;
-        visibility: visible !important;
     }
 
     .section-title,
