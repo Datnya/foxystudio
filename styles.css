@@ -517,19 +517,26 @@ body {
     font-size: 12px;
 }
 
-/* Print Styles */
+/* Print Styles - EXTREME COMPATIBILITY */
 @media print {
     @page {
         margin: 0;
         size: A4 landscape;
     }
 
+    /* Force EVERYTHING visible first */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+    }
+
     body {
         background-color: #000 !important;
         margin: 0;
         padding: 0;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
     }
 
     .proposal-container {
@@ -539,21 +546,24 @@ body {
     }
 
     .page {
-        margin: 0;
-        border: none !important;
-        box-shadow: none !important;
-        width: 100vw;
-        height: 100vh;
-        page-break-after: always;
-        overflow: hidden;
+        margin: 0 !important;
+        padding: 60px 80px !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        page-break-after: always !important;
+        overflow: hidden !important;
         visibility: visible !important;
+        opacity: 1 !important;
         display: flex !important;
-        background-image: none !important;
-        /* Force remove background patterns */
-        background-color: #000 !important;
+        flex-direction: column !important;
+        background: #000 !important;
     }
 
-    /* Force all potentially hidden elements to be visible in PDF */
+    /* Target all animated elements with high specificity */
+    html.js .animate-up,
+    html.js .animate-right,
+    html.js .animate-drop,
+    html.js .animate-pulse,
     .animate-up,
     .animate-right,
     .animate-drop,
@@ -575,53 +585,69 @@ body {
         opacity: 1 !important;
         display: block !important;
         transform: none !important;
-        animation: none !important;
-        transition: none !important;
+        position: static !important;
     }
 
+    /* Methodology Section Grid Fix */
     .process-cards {
         display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
-        gap: 20px !important;
+        gap: 30px !important;
+        margin-top: 50px !important;
         perspective: none !important;
     }
 
     .process-card {
-        border: 1px solid var(--accent-color) !important;
         background: #111 !important;
-        padding: 20px !important;
+        border: 2px solid var(--accent-color) !important;
+        padding: 30px !important;
+        border-radius: 15px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
     }
 
+    .card-icon-wrapper {
+        background: var(--accent-color) !important;
+        border-radius: 10px !important;
+        width: 80px !important;
+        height: 80px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-bottom: 20px !important;
+    }
+
+    .card-icon {
+        fill: #fff !important;
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .process-card h4 {
+        color: #fff !important;
+        margin-bottom: 15px !important;
+    }
+
+    .process-card ul,
+    .process-card li {
+        display: block !important;
+        color: #ddd !important;
+        text-align: left !important;
+    }
+
+    /* Hide decorative elements */
     .card-glow,
     .corner-fox,
-    .welcome-sidebar {
+    .welcome-sidebar,
+    .step-badge {
         display: none !important;
     }
 
-    /* Boost contrast for print */
-    h1,
-    h2,
-    h3,
-    h4,
-    span,
-    p,
-    li,
-    .name,
-    .value {
-        color: #fff !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-    }
-
-    /* Restore specific brand colors */
-    .proposal-title span,
-    .accent-color,
-    .section-title,
-    .presenter .name,
-    .step-badge,
-    .investment-value,
-    .welcome-manifesto-highlight {
+    .section-title {
         color: var(--accent-color) !important;
+        margin-bottom: 30px !important;
     }
 }
 
