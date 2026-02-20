@@ -548,23 +548,54 @@ body {
         overflow: hidden;
         visibility: visible !important;
         display: flex !important;
+        background-image: none !important;
+        /* Force remove background patterns */
+        background-color: #000 !important;
     }
 
     /* Force all potentially hidden elements to be visible in PDF */
     .animate-up,
     .animate-right,
     .animate-drop,
-    .animate-heartbeat,
-    [style*="visibility: hidden"],
+    .animate-pulse,
+    .process-card,
     .service-card,
-    .timeline-step,
     .welcome-text,
-    .welcome-small {
+    .welcome-small,
+    div,
+    section,
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    span,
+    li {
         visibility: visible !important;
         opacity: 1 !important;
         display: block !important;
         transform: none !important;
         animation: none !important;
+        transition: none !important;
+    }
+
+    .process-cards {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 20px !important;
+        perspective: none !important;
+    }
+
+    .process-card {
+        border: 1px solid var(--accent-color) !important;
+        background: #111 !important;
+        padding: 20px !important;
+    }
+
+    .card-glow,
+    .corner-fox,
+    .welcome-sidebar {
+        display: none !important;
     }
 
     /* Boost contrast for print */
@@ -584,22 +615,13 @@ body {
 
     /* Restore specific brand colors */
     .proposal-title span,
-    .welcome-subtitle,
     .accent-color,
     .section-title,
     .presenter .name,
-    .step-number,
-    .investment-value {
+    .step-badge,
+    .investment-value,
+    .welcome-manifesto-highlight {
         color: var(--accent-color) !important;
-    }
-
-    .gray-text,
-    .item-desc,
-    .welcome-small,
-    .label,
-    p,
-    li {
-        color: #eee !important;
     }
 }
 
