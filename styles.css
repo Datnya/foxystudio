@@ -517,26 +517,26 @@ body {
     font-size: 12px;
 }
 
-/* Print Styles - EXTREME COMPATIBILITY */
+/* Print Styles - REFINED FOR STABILITY */
 @media print {
     @page {
         margin: 0;
         size: A4 landscape;
     }
 
-    /* Force EVERYTHING visible first */
+    /* Force EVERYTHING visible without breaking structure */
     * {
         -webkit-print-color-adjust: exact !important;
         print-color-adjust: exact !important;
         animation: none !important;
         transition: none !important;
-        transform: none !important;
     }
 
     body {
         background-color: #000 !important;
         margin: 0;
         padding: 0;
+        color: #fff !important;
     }
 
     .proposal-container {
@@ -551,68 +551,60 @@ body {
         width: 100vw !important;
         height: 100vh !important;
         page-break-after: always !important;
-        overflow: hidden !important;
-        visibility: visible !important;
-        opacity: 1 !important;
         display: flex !important;
         flex-direction: column !important;
         background: #000 !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        overflow: hidden !important;
     }
 
-    /* Target all animated elements with high specificity */
-    html.js .animate-up,
-    html.js .animate-right,
-    html.js .animate-drop,
-    html.js .animate-pulse,
+    /* Fix Methodology and Services Visibility */
     .animate-up,
     .animate-right,
     .animate-drop,
     .animate-pulse,
-    .process-card,
+    .js .animate-up,
+    .js .animate-right,
+    .js .animate-drop,
+    .js .animate-pulse,
     .service-card,
+    .process-card,
     .welcome-text,
-    .welcome-small,
-    div,
-    section,
-    h1,
-    h2,
-    h3,
-    h4,
-    p,
-    span,
-    li {
-        visibility: visible !important;
+    .welcome-small {
         opacity: 1 !important;
-        display: block !important;
+        visibility: visible !important;
+        display: flex !important;
+        /* Restore flex/grid compatibility */
+        flex-direction: column !important;
         transform: none !important;
-        position: static !important;
     }
 
-    /* Methodology Section Grid Fix */
+    /* Restore Original Grids */
+    .service-cards,
     .process-cards {
         display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
         gap: 30px !important;
-        margin-top: 50px !important;
-        perspective: none !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        margin-top: 40px !important;
     }
 
+    .service-card,
     .process-card {
-        background: #111 !important;
-        border: 2px solid var(--accent-color) !important;
+        background: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid var(--accent-color) !important;
         padding: 30px !important;
         border-radius: 15px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        text-align: center !important;
+        height: auto !important;
     }
 
     .card-icon-wrapper {
         background: var(--accent-color) !important;
         border-radius: 10px !important;
-        width: 80px !important;
-        height: 80px !important;
+        width: 60px !important;
+        height: 60px !important;
         display: flex !important;
         align-items: center !important;
         justify-content: center !important;
@@ -621,33 +613,36 @@ body {
 
     .card-icon {
         fill: #fff !important;
-        width: 40px !important;
-        height: 40px !important;
+        width: 30px !important;
+        height: 30px !important;
     }
 
-    .process-card h4 {
+    /* Typography Contrast */
+    h1,
+    h2,
+    h3,
+    h4,
+    p,
+    span,
+    li {
         color: #fff !important;
-        margin-bottom: 15px !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
 
-    .process-card ul,
-    .process-card li {
-        display: block !important;
-        color: #ddd !important;
-        text-align: left !important;
+    .section-title,
+    .proposal-title span,
+    .welcome-manifesto-highlight,
+    .name,
+    .step-badge {
+        color: var(--accent-color) !important;
     }
 
-    /* Hide decorative elements */
+    /* Hide pure interactives */
     .card-glow,
     .corner-fox,
-    .welcome-sidebar,
-    .step-badge {
+    .welcome-sidebar {
         display: none !important;
-    }
-
-    .section-title {
-        color: var(--accent-color) !important;
-        margin-bottom: 30px !important;
     }
 }
 
