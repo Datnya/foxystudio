@@ -4,178 +4,387 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Propuesta Económica (Versión PDF Estática) - Foxy Studio</title>
-    <link rel="stylesheet" href="styles.css?v=5">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Propuesta Foxy Studio - Versión de Impresión Final</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Force everything visible for PDF export */
+        :root {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --accent-color: #FF7518;
+            --gray-text: #888888;
+            --card-bg: rgba(255, 255, 255, 0.05);
+        }
+
         * {
-            opacity: 1 !important;
-            visibility: visible !important;
-            transform: none !important;
-            animation: none !important;
-            transition: none !important;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Outfit', sans-serif;
+            text-rendering: optimizeLegibility;
         }
 
         .page {
-            page-break-after: always !important;
-            break-after: page !important;
+            width: 297mm;
+            height: 210mm;
+            overflow: hidden;
+            position: relative;
+            background-color: var(--bg-color);
+            page-break-after: always;
+            display: flex;
+            flex-direction: column;
+            padding: 60px 80px;
+        }
+
+        h2.section-title {
+            font-size: 32px;
+            color: var(--accent-color);
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* PAGE 1: COVER */
+        .cover-page {
+            justify-content: center;
+            background: #000 url('FONDO.jpg') no-repeat center center;
+            background-size: cover;
+        }
+
+        .brand-logo-main {
+            width: 350px;
+            margin-bottom: 40px;
+        }
+
+        .proposal-title {
+            font-size: 40px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        .proposal-title span {
+            color: var(--accent-color);
+        }
+
+        .presenter {
+            margin-top: 40px;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 20px;
+        }
+
+        /* PAGE 2: WELCOME */
+        .welcome-content-wrapper {
+            margin: auto;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .welcome-text {
+            font-size: 28px;
+            line-height: 1.4;
+            margin-bottom: 30px;
+        }
+
+        .welcome-manifesto-highlight {
+            color: var(--accent-color);
+            display: block;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .welcome-small {
+            color: var(--gray-text);
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        /* PAGE 3: SERVICES (ORIGNAL DESIGN) */
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 117, 24, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: left;
+        }
+
+        .service-card .card-icon {
+            fill: var(--accent-color);
+            width: 45px;
+            height: 45px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h4 {
+            font-size: 18px;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-color);
+        }
+
+        /* PAGE 4: METHODOLOGY (CENTERED CARDS) */
+        .process-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .process-card {
+            background: var(--card-bg);
+            border: 1px solid var(--accent-color);
+            padding: 35px 25px;
+            border-radius: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card-icon-wrapper-pdf {
+            background: var(--accent-color);
+            width: 70px;
+            height: 70px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .card-icon-pdf {
+            width: 35px;
+            height: 35px;
+            fill: #fff;
+        }
+
+        .process-card h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .process-card ul {
+            list-style: none;
+            text-align: left;
+            width: 100%;
+        }
+
+        .process-card li {
+            font-size: 13px;
+            margin-bottom: 8px;
+            color: #ddd;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .process-card li::before {
+            content: "•";
+            color: var(--accent-color);
+            position: absolute;
+            left: 0;
+        }
+
+        .step-badge {
+            font-weight: 700;
+            color: var(--accent-color);
+            font-size: 12px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .investment-footer {
+            margin-top: auto;
+            border-top: 1px solid rgba(255, 117, 24, 0.3);
+            padding-top: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: end;
+        }
+
+        .price-text {
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .price-label {
+            font-size: 14px;
+            color: var(--gray-text);
+            margin-top: 5px;
+        }
+
+        .contact-info {
+            text-align: right;
+            color: var(--gray-text);
+            font-size: 14px;
+        }
+
+        @media print {
+            body {
+                background: #000;
+            }
+
+            .page {
+                border: none;
+                margin: 0;
+            }
         }
     </style>
 </head>
 
-<body class="pdf-version">
-    <div class="proposal-container">
-        <!-- PAGE 1: COVER -->
-        <div class="page cover-page">
-            <div class="cover-content">
-                <span class="slogan">Estrategia Astuta, Crecimiento Constante</span>
-                <img src="Logo PNG.png" class="brand-logo-main" alt="Foxy Studio Logo">
-
-                <h1 class="proposal-title">
-                    PROPUESTA ECONÓMICA:<br><span>OPTIMIZACIÓN & DISEÑO WEB</span>
-                </h1>
-
-                <div class="proposal-for">
-                    <span class="label">Preparado para:</span>
-                    <p class="client-name">APM CONSULTORIA Y PROYECTOS S.A.C.</p>
-                </div>
-            </div>
-
+<body>
+    <!-- PAGE 1: COVER -->
+    <div class="page cover-page">
+        <div class="cover-content">
+            <span
+                style="font-size: 16px; letter-spacing: 4px; text-transform: uppercase; display: block; margin-bottom: 20px;">Estrategia
+                Astuta, Crecimiento Constante</span>
+            <img src="Logo PNG.png" class="brand-logo-main" alt="Foxy Studio Logo">
+            <h1 class="proposal-title">
+                PROPUESTA ECONÓMICA:<br><span>OPTIMIZACIÓN & DISEÑO WEB</span>
+            </h1>
             <div class="presenter">
-                <span class="label">Propuesta de Desarrollo Web</span>
-                <p class="name">2026</p>
+                <span
+                    style="font-size: 12px; text-transform: uppercase; color: var(--gray-text); letter-spacing: 1px;">Preparado
+                    para:</span>
+                <p style="font-size: 22px; font-weight: 700; margin-top: 5px;">APM CONSULTORIA Y PROYECTOS S.A.C.</p>
+                <p style="margin-top: 20px; color: var(--accent-color); font-weight: 700;">PROYECTO 2026</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2: WELCOME -->
+    <div class="page">
+        <div class="welcome-content-wrapper">
+            <img src="Logo PNG.png" style="width: 120px; margin-bottom: 50px;" alt="Logo Small">
+            <div class="welcome-text">
+                <span class="welcome-manifesto-highlight">Creemos en la inteligencia aplicada a los negocios.</span>
+                En Foxy Studio, combinamos astucia estratégica con un crecimiento medible para elevar tu marca al
+                siguiente nivel digital.
+            </div>
+            <div class="welcome-small">
+                Este documento no es una simple cotización; es el mapa estratégico para consolidar tu liderazgo en el
+                mundo digital. Entendemos que tu empresa ya tiene solidez, y nuestro objetivo es proyectar esa misma
+                autoridad mediante una plataforma que trabaje para ti las 24 horas del día.
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 3: SERVICES -->
+    <div class="page">
+        <h2 class="section-title">Servicios Estratégicos</h2>
+        <div class="service-cards">
+            <div class="service-card">
+                <svg class="card-icon" viewBox="0 0 24 24">
+                    <path d="M12 2L4 7v10l8 5 8-5V7l-8-5z" />
+                </svg>
+                <h4>Landing Page Corporativa</h4>
+                <p>Diseño profesional enfocado en la conversión, comunicación de propuesta de valor y captación activa
+                    de potenciales clientes.</p>
+            </div>
+            <div class="service-card">
+                <svg class="card-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+                </svg>
+                <h4>Catálogo de Cursos</h4>
+                <p>Sección informativa detallada para presentar tu oferta académica con redirección directa a tu
+                    plataforma externa de aprendizaje.</p>
+            </div>
+            <div class="service-card">
+                <svg class="card-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H5v-2h10v2zm4-4H5v-2h14v2zm0-4H5V8h14v2z" />
+                </svg>
+                <h4>Infraestructura y Hosting</h4>
+                <p>Optimización técnica sobre el hosting y dominio actuales. No incluye costos de adquisición ni
+                    renovación, responsabilidad de APM Consultoría.</p>
+            </div>
+        </div>
+        <div style="margin-top: 50px; font-size: 16px; line-height: 1.6; color: var(--gray-text);">
+            <strong style="color: #fff;">Nuestra Solución:</strong> Reestructuración técnica, mejora del diseño y SEO
+            estratégico para posicionamiento responsive garantizado.
+        </div>
+    </div>
+
+    <!-- PAGE 4: METHODOLOGY -->
+    <div class="page">
+        <h2 class="section-title">Metodología y Etapas</h2>
+        <div class="process-cards">
+            <div class="process-card">
+                <div class="step-badge">Fase 01</div>
+                <div class="card-icon-wrapper-pdf">
+                    <svg class="card-icon-pdf" viewBox="0 0 24 24">
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
+                    </svg>
+                </div>
+                <h4>Fase de Inmersión</h4>
+                <ul>
+                    <li>Reunión de ADN corporativo</li>
+                    <li>Definición de valores de marca</li>
+                    <li>Propuesta de concepto visual</li>
+                </ul>
+            </div>
+            <div class="process-card">
+                <div class="step-badge">Fase 02</div>
+                <div class="card-icon-wrapper-pdf">
+                    <svg class="card-icon-pdf" viewBox="0 0 24 24">
+                        <path
+                            d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
+                    </svg>
+                </div>
+                <h4>Fase de Desarrollo</h4>
+                <ul>
+                    <li>Estructura técnica responsive</li>
+                    <li>Prototipado estratégico</li>
+                    <li>Integración de CTAs y Forms</li>
+                </ul>
+            </div>
+            <div class="process-card">
+                <div class="step-badge">Fase 03</div>
+                <div class="card-icon-wrapper-pdf">
+                    <svg class="card-icon-pdf" viewBox="0 0 24 24">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
+                    </svg>
+                </div>
+                <h4>Fase de Calidad</h4>
+                <ul>
+                    <li>Pruebas de funcionamiento</li>
+                    <li>Entrega de web operativa</li>
+                    <li>Soporte y ajustes (3 meses)</li>
+                </ul>
             </div>
         </div>
 
-        <!-- PAGE 2: WELCOME -->
-        <div class="page welcome-page">
-            <div class="welcome-content-wrapper">
-                <div class="logo-small" style="margin-bottom: 40px;">
-                    <img src="Logo PNG.png" class="brand-logo-small" alt="Foxy Studio Logo">
-                </div>
-
-                <div class="welcome-text">
-                    <span class="welcome-manifesto-highlight">Creemos en la inteligencia aplicada a los negocios.</span>
-                    En Foxy Studio, combinamos astucia estratégica con un crecimiento medible para elevar tu marca al
-                    siguiente nivel digital.
-                </div>
-
-                <div class="welcome-small">
-                    Este documento no es una simple cotización; es el mapa estratégico para consolidar tu liderazgo en
-                    el mundo digital. Entendemos que tu empresa ya tiene solidez, y nuestro objetivo es proyectar esa
-                    misma autoridad mediante una plataforma que trabaje para ti las 24 horas del día.
-                </div>
+        <div class="investment-footer">
+            <div>
+                <h3 style="color: #fff; font-size: 18px; text-transform: uppercase;">Inversión Total</h3>
+                <p class="price-text">S/ 500.00</p>
+                <p class="price-label">* Pago: 50% de adelanto para iniciar.</p>
             </div>
-        </div>
-
-        <!-- PAGE 3: ESTRATEGIA Y SERVICIOS -->
-        <div class="page welcome-page">
-            <div class="services-container">
-                <h2 class="section-title">Servicios Estratégicos</h2>
-                <div class="service-cards">
-                    <div class="service-card">
-                        <svg class="card-icon" viewBox="0 0 24 24">
-                            <path d="M12 2L4 7v10l8 5 8-5V7l-8-5z" />
-                        </svg>
-                        <h4>Landing Page Corporativa</h4>
-                        <p>Diseño profesional enfocado en la conversión, comunicación de propuesta de valor y captación
-                            activa de potenciales clientes.</p>
-                    </div>
-                    <div class="service-card">
-                        <svg class="card-icon" viewBox="0 0 24 24">
-                            <path
-                                d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
-                        </svg>
-                        <h4>Catálogo de Cursos</h4>
-                        <p>Sección informativa detallada para presentar tu oferta académica con redirección directa a tu
-                            plataforma externa de aprendizaje.</p>
-                    </div>
-                    <div class="service-card">
-                        <svg class="card-icon" viewBox="0 0 24 24">
-                            <path
-                                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H5v-2h10v2zm4-4H5v-2h14v2zm0-4H5V8h14v2z" />
-                        </svg>
-                        <h4>Infraestructura y Hosting</h4>
-                        <p>El servicio consiste en la optimización técnica sobre el hosting y dominio actuales del
-                            cliente. No incluye el costo de adquisición ni renovación de hosting o dominio, los cuales
-                            son responsabilidad de APM Consultoría.</p>
-                    </div>
-                </div>
-
-                <div style="margin-top: 50px;" class="welcome-small">
-                    <strong>Nuestra Solución:</strong> Nos enfocamos en la <strong>reestructuración técnica, mejora del
-                        diseño y SEO estratégico</strong> para posicionamiento. Todo el desarrollo es responsive para
-                    garantizar el mayor alcance posible.
-                </div>
-            </div>
-        </div>
-
-        <!-- PAGE 4: METODOLOGÍA Y PROCESO -->
-        <div class="page process-page">
-            <h2 class="section-title">Metodología y Etapas</h2>
-            <div class="process-cards">
-                <div class="process-card">
-                    <div class="step-badge">01</div>
-                    <div class="card-icon-wrapper-pdf">
-                        <svg class="card-icon-pdf" viewBox="0 0 24 24">
-                            <path
-                                d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z" />
-                        </svg>
-                    </div>
-                    <h4>Fase de Inmersión</h4>
-                    <ul>
-                        <li>Reunión de ADN corporativo</li>
-                        <li>Definición de valores de marca</li>
-                        <li>Propuesta de concepto visual</li>
-                    </ul>
-                </div>
-                <div class="process-card">
-                    <div class="step-badge">02</div>
-                    <div class="card-icon-wrapper-pdf">
-                        <svg class="card-icon-pdf" viewBox="0 0 24 24">
-                            <path
-                                d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z" />
-                        </svg>
-                    </div>
-                    <h4>Fase de Desarrollo</h4>
-                    <ul>
-                        <li>Estructura técnica responsive</li>
-                        <li>Prototipado estratégico</li>
-                        <li>Integración de CTAs y Formularios</li>
-                    </ul>
-                </div>
-                <div class="process-card">
-                    <div class="step-badge">03</div>
-                    <div class="card-icon-wrapper-pdf">
-                        <svg class="card-icon-pdf" viewBox="0 0 24 24">
-                            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
-                        </svg>
-                    </div>
-                    <h4>Fase de Calidad</h4>
-                    <ul>
-                        <li>Pruebas de funcionamiento real</li>
-                        <li>Entrega de web operativa</li>
-                        <li>Ajustes y correcciones (3 meses)</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div
-                style="margin-top: 60px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; border-top: 1px solid rgba(255,117,24,0.3); padding-top: 40px;">
-                <div>
-                    <h2 class="section-title" style="margin-bottom: 10px; font-size: 20px;">Inversión en Desarrollo</h2>
-                    <p style="font-size: 48px; font-weight: 700; color: var(--accent-color);">S/ 500.00</p>
-                    <p style="font-size: 14px; color: #888; margin-top: 5px;">* Pago: 50% de adelanto para iniciar.</p>
-                </div>
-                <div style="text-align: right;">
-                    <p class="label">Plazo de Entrega</p>
-                    <p style="font-size: 32px; font-weight: 700;">2 Semanas Hábiles</p>
-                    <div style="margin-top: 20px; font-size: 13px; color: #888;">
-                        <span style="display: block;">@foxystudio.design</span>
-                        <span>www.foxystudio.com</span>
-                    </div>
-                </div>
+            <div class="contact-info">
+                <p style="font-size: 24px; font-weight: 700; color: #fff; margin-bottom: 10px;">2 Semanas Hábiles</p>
+                <p>Plazo de Entrega Estimado</p>
+                <p style="margin-top: 20px;">@foxystudio.design | www.foxystudio.com</p>
             </div>
         </div>
     </div>
